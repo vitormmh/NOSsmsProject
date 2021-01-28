@@ -1,0 +1,2306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://SmsPro/SMSPROWS/" xmlns:s0="http://www.outsystems.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://SmsPro/SMSPROWS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SMSPRO Web Service</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.outsystems.com">
+      <s:element name="GetUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Users" type="s0:ArrayOfWS_GetUsers_Record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWS_GetUsers_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WS_GetUsers_Record" nillable="true" type="s0:WS_GetUsers_Record" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WS_GetUsers_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Active" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PwdExpires" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanChangePwd" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanBlockUser" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPwdTemporary" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastPwdChange" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strStatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strFromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strFromTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Campaigns" type="s0:ArrayOfWS_Campaign_Record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWS_Campaign_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WS_Campaign_Record" nillable="true" type="s0:WS_Campaign_Record" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WS_Campaign_Record">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ListId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignIds" type="s0:ArrayOfCampaignToDelete" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCampaignToDelete">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CampaignToDelete" nillable="true" type="s0:CampaignToDelete" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CampaignToDelete">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CampaignId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteCampaignResults" type="s0:ArrayOfDeleteCampaignResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDeleteCampaignResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteCampaignResult" nillable="true" type="s0:DeleteCampaignResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeleteCampaignResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CampaignId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCampaignStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleDateTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReply" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="EndScheduleDateTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="intStatus" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolConfirmation" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strConfirmationMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolPays" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolOverCharged" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolAcceptsAll" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="intMessagesNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intListId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strListName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intListSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWapPush">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MsisdnList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolInSender" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strWapPushUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWapPushResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strFromDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lists" type="s0:ArrayOfList_Record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfList_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="List_Record" nillable="true" type="s0:List_Record" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="List_Record">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Active" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddListMSISDN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intListId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="intMSISDN" type="s0:ArrayOfMSISDN" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMSISDN">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MSISDN" nillable="true" type="s0:MSISDN" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MSISDN">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Number" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddListMSISDNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMemberInformationByListId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ListId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMemberInformationByListIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Members" type="s0:ArrayOfMemberInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMemberInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MemberInformation" nillable="true" type="s0:MemberInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Phone_Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel6" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel7" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel8" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel9" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variavel10" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TerminateCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TerminateCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignReplies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignRepliesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Replies" type="s0:ArrayOfReply_Record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReply_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Reply_Record" nillable="true" type="s0:Reply_Record" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Reply_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MSISDN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Moment" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InList" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ListId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendSMSSelId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MsisdnList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolInSender" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSSelIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCampaignAutoReplyRegEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolHasList" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intListId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="stringMSISDN" type="s0:ArrayOfTextMsisdn" />
+            <s:element minOccurs="0" maxOccurs="1" name="strScheduleDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strScheduleTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReply" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEndScheduleDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEndScheduleTime" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolConfirmation" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strConfirmationMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolPays" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolOverCharged" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolAcceptsAll" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolNow" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolInSender" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReportDelivered" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReportNotDelivered" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReplyAutoText" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strRegularExpressionName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTextMsisdn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TextMsisdn" nillable="true" type="s0:TextMsisdn" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TextMsisdn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Msisdn" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendCampaignAutoReplyRegExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMembers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Members" type="s0:ArrayOfMembers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMembers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Members" nillable="true" type="s0:Members" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Members">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Parameters" type="s0:ArrayOfParameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Parameter" nillable="true" type="s0:Parameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Parameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddMembersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MsisdnList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeliveryReports">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeliveryReportsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeliveryReports" type="s0:ArrayOfWS_Delivery_Record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWS_Delivery_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WS_Delivery_Record" nillable="true" type="s0:WS_Delivery_Record" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WS_Delivery_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Msisdn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Instant" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetIdentifiers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIdentifiersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Identifiers" type="s0:ArrayOfTenantMsgID" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTenantMsgID">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TenantMsgID" nillable="true" type="s0:TenantMsgID" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TenantMsgID">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Message_ID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRegularExpressions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRegularExpressionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegularExpressionsNames" type="s0:ArrayOfText" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfText">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Text" nillable="true" type="s0:Text" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Text">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateMembers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Members" type="s0:ArrayOfMembers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMembersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolActive" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetUserPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strWsUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strWsPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetUserPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchLogs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strOwnerUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCampaignName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSender" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPhoneNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSMSType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strStartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchLogsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Logs" type="s0:ArrayOfWS_LogSentReceivedSMS" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalSearchLogs" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LogsLength" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWS_LogSentReceivedSMS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WS_LogSentReceivedSMS" nillable="true" type="s0:WS_LogSentReceivedSMS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WS_LogSentReceivedSMS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SMSMessageID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSOriginalMessageId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampaignId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MemberId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InitialDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSValidity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DLRStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DLRInstant" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sender" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Instant" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignUnreadReplies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignUnreadRepliesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Replies" type="s0:ArrayOfReply_Record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strWsUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strWsPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNewName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNewUsername" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolPwdExpires" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolCanChangePwd" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolCanBlockUser" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strContactPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEmail" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsActive" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsAuditor" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsManagerMessageTemplates" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsManagerContactLists" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsReportViewer" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolUseOnlyMessageTemplates" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsCampaignExpressUser" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsAgent" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsAgentGest" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolIsAgentReadOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSSelIdwithDLRWithValidity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MsisdnList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolInSender" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="intValidity" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsFlash" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSSelIdwithDLRWithValidityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CampaignId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalSMSSent" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalSMSwithError" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDNwithErrorList" type="s0:ArrayOfMSISDNtext" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMSISDNtext">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MSISDNtext" nillable="true" type="s0:MSISDNtext" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MSISDNtext">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Msisdn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendCampaignWapPush">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolHasList" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intListId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDNRecList" type="s0:ArrayOfTextMsisdn" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolNow" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strScheduleDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strScheduleTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strWapPushUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolInSender" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReportDelivered" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReportNotDelivered" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCampaignWapPushResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOperationalActivityLogs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSearchUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAction" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strObject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strStartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOperationalActivityLogsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OperationalActivitiesLogs" type="s0:ArrayOfLogOperationalActivity" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalLogs" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LogsLength" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLogOperationalActivity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LogOperationalActivity" nillable="true" type="s0:LogOperationalActivity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LogOperationalActivity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Action" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Object" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Details" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Instant" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendSMSSelIdwithDLR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MsisdnList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolInSender" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSSelIdwithDLRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CampaignId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalSMSSent" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalSMSwithError" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDNwithErrorList" type="s0:ArrayOfMSISDNtext" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSwithDLR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MsisdnList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSwithDLRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CampaignId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalSMSSent" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalSMSwithError" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDNwithErrorList" type="s0:ArrayOfMSISDNtext" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveListMSISDN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intListId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intMSISDN" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveListMSISDNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCampaignAutoDedicatedReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolHasList" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intListId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="stringMSISDN" type="s0:ArrayOfTextMsisdn" />
+            <s:element minOccurs="0" maxOccurs="1" name="strScheduleDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strScheduleTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReply" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEndScheduleDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEndScheduleTime" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolConfirmation" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strConfirmationMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolPays" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolOverCharged" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolAcceptsAll" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolNow" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolInSender" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReportDelivered" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReportNotDelivered" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReplyAutoText" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolDedicatedReply" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCampaignAutoDedicatedReplyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCampaignLists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignListIds" type="s0:ArrayOfCampaignListToDelete" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCampaignListToDelete">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CampaignListToDelete" nillable="true" type="s0:CampaignListToDelete" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CampaignListToDelete">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CampaignListId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteCampaignListsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Results" type="s0:ArrayOfDeleteCampaignListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDeleteCampaignListResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteCampaignListResult" nillable="true" type="s0:DeleteCampaignListResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeleteCampaignListResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CampaignListId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendCampaignAutoReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolHasList" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intListId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="stringMSISDN" type="s0:ArrayOfTextMsisdn" />
+            <s:element minOccurs="0" maxOccurs="1" name="strScheduleDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strScheduleTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReply" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEndScheduleDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEndScheduleTime" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolConfirmation" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strConfirmationMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolPays" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolOverCharged" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolAcceptsAll" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolNow" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strIdentifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolInSender" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReportDelivered" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReportNotDelivered" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolReplyAutoText" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCampaignAutoReplyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCampaignId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DumpMessageLogs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DumpMessageLogsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Logs" type="s0:ArrayOfWS_LogSentReceivedSMSDump" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalLogs" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LogsLength" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWS_LogSentReceivedSMSDump">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WS_LogSentReceivedSMSDump" nillable="true" type="s0:WS_LogSentReceivedSMSDump" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WS_LogSentReceivedSMSDump">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SMSMessageID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSOriginalMessageId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampaignId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MemberId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InitialDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSValidity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DLRStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DLRInstant" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sender" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Instant" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LogId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetUserData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strWsUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strWsPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="PwdExpires" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="CanChangePwd" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="CanBlockUser" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetUserDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddListMember">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intListId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="intMSISDN" type="s0:ArrayOfMember_Customized_Record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMember_Customized_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Member_Customized_Record" nillable="true" type="s0:Member_Customized_Record" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Member_Customized_Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Phone_Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Send_Variable" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddListMemberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateIdentifiers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recListIdentifiers" type="s0:ArrayOfTenantMsgID" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateIdentifiersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strAccountNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intMSISDN" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SubscriptionDate" type="s:date" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPlanName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolOnNet" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="bolPeriod" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="CurrentDate" type="s:date" />
+            <s:element minOccurs="1" maxOccurs="1" name="intUsedSms" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="intPlannedSms" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intContractedSms" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intFreeSms" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intRollOverSms" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intAvailableSms" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NextDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNextPlanned" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNextContracted" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNextFree" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNextAvailable" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUsersSoapIn">
+    <wsdl:part name="parameters" element="s0:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapOut">
+    <wsdl:part name="parameters" element="s0:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignsSoapIn">
+    <wsdl:part name="parameters" element="s0:GetCampaigns" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignsSoapOut">
+    <wsdl:part name="parameters" element="s0:GetCampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCampaignsSoapIn">
+    <wsdl:part name="parameters" element="s0:DeleteCampaigns" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCampaignsSoapOut">
+    <wsdl:part name="parameters" element="s0:DeleteCampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignStatusSoapIn">
+    <wsdl:part name="parameters" element="s0:GetCampaignStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignStatusSoapOut">
+    <wsdl:part name="parameters" element="s0:GetCampaignStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendWapPushSoapIn">
+    <wsdl:part name="parameters" element="s0:SendWapPush" />
+  </wsdl:message>
+  <wsdl:message name="SendWapPushSoapOut">
+    <wsdl:part name="parameters" element="s0:SendWapPushResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListsSoapIn">
+    <wsdl:part name="parameters" element="s0:GetLists" />
+  </wsdl:message>
+  <wsdl:message name="GetListsSoapOut">
+    <wsdl:part name="parameters" element="s0:GetListsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddListMSISDNSoapIn">
+    <wsdl:part name="parameters" element="s0:AddListMSISDN" />
+  </wsdl:message>
+  <wsdl:message name="AddListMSISDNSoapOut">
+    <wsdl:part name="parameters" element="s0:AddListMSISDNResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberInformationByListIdSoapIn">
+    <wsdl:part name="parameters" element="s0:GetMemberInformationByListId" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberInformationByListIdSoapOut">
+    <wsdl:part name="parameters" element="s0:GetMemberInformationByListIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TerminateCampaignSoapIn">
+    <wsdl:part name="parameters" element="s0:TerminateCampaign" />
+  </wsdl:message>
+  <wsdl:message name="TerminateCampaignSoapOut">
+    <wsdl:part name="parameters" element="s0:TerminateCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignRepliesSoapIn">
+    <wsdl:part name="parameters" element="s0:GetCampaignReplies" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignRepliesSoapOut">
+    <wsdl:part name="parameters" element="s0:GetCampaignRepliesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSelIdSoapIn">
+    <wsdl:part name="parameters" element="s0:SendSMSSelId" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSelIdSoapOut">
+    <wsdl:part name="parameters" element="s0:SendSMSSelIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendCampaignAutoReplyRegExSoapIn">
+    <wsdl:part name="parameters" element="s0:SendCampaignAutoReplyRegEx" />
+  </wsdl:message>
+  <wsdl:message name="SendCampaignAutoReplyRegExSoapOut">
+    <wsdl:part name="parameters" element="s0:SendCampaignAutoReplyRegExResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCampaignSoapIn">
+    <wsdl:part name="parameters" element="s0:DeleteCampaign" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCampaignSoapOut">
+    <wsdl:part name="parameters" element="s0:DeleteCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMembersSoapIn">
+    <wsdl:part name="parameters" element="s0:AddMembers" />
+  </wsdl:message>
+  <wsdl:message name="AddMembersSoapOut">
+    <wsdl:part name="parameters" element="s0:AddMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapIn">
+    <wsdl:part name="parameters" element="s0:SendSMS" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapOut">
+    <wsdl:part name="parameters" element="s0:SendSMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliveryReportsSoapIn">
+    <wsdl:part name="parameters" element="s0:GetDeliveryReports" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliveryReportsSoapOut">
+    <wsdl:part name="parameters" element="s0:GetDeliveryReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIdentifiersSoapIn">
+    <wsdl:part name="parameters" element="s0:GetIdentifiers" />
+  </wsdl:message>
+  <wsdl:message name="GetIdentifiersSoapOut">
+    <wsdl:part name="parameters" element="s0:GetIdentifiersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRegularExpressionsSoapIn">
+    <wsdl:part name="parameters" element="s0:GetRegularExpressions" />
+  </wsdl:message>
+  <wsdl:message name="GetRegularExpressionsSoapOut">
+    <wsdl:part name="parameters" element="s0:GetRegularExpressionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMembersSoapIn">
+    <wsdl:part name="parameters" element="s0:UpdateMembers" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMembersSoapOut">
+    <wsdl:part name="parameters" element="s0:UpdateMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateListSoapIn">
+    <wsdl:part name="parameters" element="s0:CreateList" />
+  </wsdl:message>
+  <wsdl:message name="CreateListSoapOut">
+    <wsdl:part name="parameters" element="s0:CreateListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetUserPasswordSoapIn">
+    <wsdl:part name="parameters" element="s0:ResetUserPassword" />
+  </wsdl:message>
+  <wsdl:message name="ResetUserPasswordSoapOut">
+    <wsdl:part name="parameters" element="s0:ResetUserPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchLogsSoapIn">
+    <wsdl:part name="parameters" element="s0:SearchLogs" />
+  </wsdl:message>
+  <wsdl:message name="SearchLogsSoapOut">
+    <wsdl:part name="parameters" element="s0:SearchLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelCampaignSoapIn">
+    <wsdl:part name="parameters" element="s0:CancelCampaign" />
+  </wsdl:message>
+  <wsdl:message name="CancelCampaignSoapOut">
+    <wsdl:part name="parameters" element="s0:CancelCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignUnreadRepliesSoapIn">
+    <wsdl:part name="parameters" element="s0:GetCampaignUnreadReplies" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignUnreadRepliesSoapOut">
+    <wsdl:part name="parameters" element="s0:GetCampaignUnreadRepliesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserSoapIn">
+    <wsdl:part name="parameters" element="s0:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserSoapOut">
+    <wsdl:part name="parameters" element="s0:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSelIdwithDLRWithValiditySoapIn">
+    <wsdl:part name="parameters" element="s0:SendSMSSelIdwithDLRWithValidity" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSelIdwithDLRWithValiditySoapOut">
+    <wsdl:part name="parameters" element="s0:SendSMSSelIdwithDLRWithValidityResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendCampaignWapPushSoapIn">
+    <wsdl:part name="parameters" element="s0:SendCampaignWapPush" />
+  </wsdl:message>
+  <wsdl:message name="SendCampaignWapPushSoapOut">
+    <wsdl:part name="parameters" element="s0:SendCampaignWapPushResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOperationalActivityLogsSoapIn">
+    <wsdl:part name="parameters" element="s0:GetOperationalActivityLogs" />
+  </wsdl:message>
+  <wsdl:message name="GetOperationalActivityLogsSoapOut">
+    <wsdl:part name="parameters" element="s0:GetOperationalActivityLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSelIdwithDLRSoapIn">
+    <wsdl:part name="parameters" element="s0:SendSMSSelIdwithDLR" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSelIdwithDLRSoapOut">
+    <wsdl:part name="parameters" element="s0:SendSMSSelIdwithDLRResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSwithDLRSoapIn">
+    <wsdl:part name="parameters" element="s0:SendSMSwithDLR" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSwithDLRSoapOut">
+    <wsdl:part name="parameters" element="s0:SendSMSwithDLRResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveListMSISDNSoapIn">
+    <wsdl:part name="parameters" element="s0:RemoveListMSISDN" />
+  </wsdl:message>
+  <wsdl:message name="RemoveListMSISDNSoapOut">
+    <wsdl:part name="parameters" element="s0:RemoveListMSISDNResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendCampaignAutoDedicatedReplySoapIn">
+    <wsdl:part name="parameters" element="s0:SendCampaignAutoDedicatedReply" />
+  </wsdl:message>
+  <wsdl:message name="SendCampaignAutoDedicatedReplySoapOut">
+    <wsdl:part name="parameters" element="s0:SendCampaignAutoDedicatedReplyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCampaignListsSoapIn">
+    <wsdl:part name="parameters" element="s0:DeleteCampaignLists" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCampaignListsSoapOut">
+    <wsdl:part name="parameters" element="s0:DeleteCampaignListsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendCampaignAutoReplySoapIn">
+    <wsdl:part name="parameters" element="s0:SendCampaignAutoReply" />
+  </wsdl:message>
+  <wsdl:message name="SendCampaignAutoReplySoapOut">
+    <wsdl:part name="parameters" element="s0:SendCampaignAutoReplyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DumpMessageLogsSoapIn">
+    <wsdl:part name="parameters" element="s0:DumpMessageLogs" />
+  </wsdl:message>
+  <wsdl:message name="DumpMessageLogsSoapOut">
+    <wsdl:part name="parameters" element="s0:DumpMessageLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetUserDataSoapIn">
+    <wsdl:part name="parameters" element="s0:SetUserData" />
+  </wsdl:message>
+  <wsdl:message name="SetUserDataSoapOut">
+    <wsdl:part name="parameters" element="s0:SetUserDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddListMemberSoapIn">
+    <wsdl:part name="parameters" element="s0:AddListMember" />
+  </wsdl:message>
+  <wsdl:message name="AddListMemberSoapOut">
+    <wsdl:part name="parameters" element="s0:AddListMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIdentifiersSoapIn">
+    <wsdl:part name="parameters" element="s0:UpdateIdentifiers" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIdentifiersSoapOut">
+    <wsdl:part name="parameters" element="s0:UpdateIdentifiersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientStatusSoapIn">
+    <wsdl:part name="parameters" element="s0:GetClientStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetClientStatusSoapOut">
+    <wsdl:part name="parameters" element="s0:GetClientStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SMSPROWSSoap">
+    <wsdl:operation name="GetUsers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets all users</wsdl:documentation>
+      <wsdl:input message="tns:GetUsersSoapIn" />
+      <wsdl:output message="tns:GetUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaigns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all campaigns used by a client</wsdl:documentation>
+      <wsdl:input message="tns:GetCampaignsSoapIn" />
+      <wsdl:output message="tns:GetCampaignsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCampaigns">
+      <wsdl:input message="tns:DeleteCampaignsSoapIn" />
+      <wsdl:output message="tns:DeleteCampaignsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Campaign Status</wsdl:documentation>
+      <wsdl:input message="tns:GetCampaignStatusSoapIn" />
+      <wsdl:output message="tns:GetCampaignStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWapPush">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a WapPush for one or more MSISDNs.</wsdl:documentation>
+      <wsdl:input message="tns:SendWapPushSoapIn" />
+      <wsdl:output message="tns:SendWapPushSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLists">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all lists used by a client</wsdl:documentation>
+      <wsdl:input message="tns:GetListsSoapIn" />
+      <wsdl:output message="tns:GetListsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddListMSISDN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add MSISDNs to a List</wsdl:documentation>
+      <wsdl:input message="tns:AddListMSISDNSoapIn" />
+      <wsdl:output message="tns:AddListMSISDNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberInformationByListId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">WS - Obtem a lista de informações dos membros</wsdl:documentation>
+      <wsdl:input message="tns:GetMemberInformationByListIdSoapIn" />
+      <wsdl:output message="tns:GetMemberInformationByListIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TerminateCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Terminates a Campaign</wsdl:documentation>
+      <wsdl:input message="tns:TerminateCampaignSoapIn" />
+      <wsdl:output message="tns:TerminateCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignReplies">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Campaign Replies</wsdl:documentation>
+      <wsdl:input message="tns:GetCampaignRepliesSoapIn" />
+      <wsdl:output message="tns:GetCampaignRepliesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSelId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends an SMS to one or more MSISDNs with the definition of the identifier as the sender of the message or in the message body.</wsdl:documentation>
+      <wsdl:input message="tns:SendSMSSelIdSoapIn" />
+      <wsdl:output message="tns:SendSMSSelIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignAutoReplyRegEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send Campaign with Auto Reply Using Regular Expressions</wsdl:documentation>
+      <wsdl:input message="tns:SendCampaignAutoReplyRegExSoapIn" />
+      <wsdl:output message="tns:SendCampaignAutoReplyRegExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes a Campaign</wsdl:documentation>
+      <wsdl:input message="tns:DeleteCampaignSoapIn" />
+      <wsdl:output message="tns:DeleteCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMembers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add Members to a List</wsdl:documentation>
+      <wsdl:input message="tns:AddMembersSoapIn" />
+      <wsdl:output message="tns:AddMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends an SMS to one or more MSISDNs</wsdl:documentation>
+      <wsdl:input message="tns:SendSMSSoapIn" />
+      <wsdl:output message="tns:SendSMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryReports">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Delivery Reports of a Campaign</wsdl:documentation>
+      <wsdl:input message="tns:GetDeliveryReportsSoapIn" />
+      <wsdl:output message="tns:GetDeliveryReportsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIdentifiers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Identifiers</wsdl:documentation>
+      <wsdl:input message="tns:GetIdentifiersSoapIn" />
+      <wsdl:output message="tns:GetIdentifiersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRegularExpressions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Regular Expressions Names used by a client</wsdl:documentation>
+      <wsdl:input message="tns:GetRegularExpressionsSoapIn" />
+      <wsdl:output message="tns:GetRegularExpressionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMembers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update Members of a List</wsdl:documentation>
+      <wsdl:input message="tns:UpdateMembersSoapIn" />
+      <wsdl:output message="tns:UpdateMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a List for Contacts</wsdl:documentation>
+      <wsdl:input message="tns:CreateListSoapIn" />
+      <wsdl:output message="tns:CreateListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetUserPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Resets the password of an user</wsdl:documentation>
+      <wsdl:input message="tns:ResetUserPasswordSoapIn" />
+      <wsdl:output message="tns:ResetUserPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchLogs">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lets you perform searches on the messages logs</wsdl:documentation>
+      <wsdl:input message="tns:SearchLogsSoapIn" />
+      <wsdl:output message="tns:SearchLogsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancel a Campaign</wsdl:documentation>
+      <wsdl:input message="tns:CancelCampaignSoapIn" />
+      <wsdl:output message="tns:CancelCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignUnreadReplies">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Campaign Unread Replies</wsdl:documentation>
+      <wsdl:input message="tns:GetCampaignUnreadRepliesSoapIn" />
+      <wsdl:output message="tns:GetCampaignUnreadRepliesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates an User</wsdl:documentation>
+      <wsdl:input message="tns:CreateUserSoapIn" />
+      <wsdl:output message="tns:CreateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSelIdwithDLRWithValidity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends an SMS to one or more MSISDNs with the definition of the identifier as the sender of the message or in the message body. Accept the validity of SMS in minutes as a parameter and also can indicate whether it is a Flash SMS.</wsdl:documentation>
+      <wsdl:input message="tns:SendSMSSelIdwithDLRWithValiditySoapIn" />
+      <wsdl:output message="tns:SendSMSSelIdwithDLRWithValiditySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignWapPush">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send Wap Push Campaign</wsdl:documentation>
+      <wsdl:input message="tns:SendCampaignWapPushSoapIn" />
+      <wsdl:output message="tns:SendCampaignWapPushSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOperationalActivityLogs">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the Operational Activity Logs</wsdl:documentation>
+      <wsdl:input message="tns:GetOperationalActivityLogsSoapIn" />
+      <wsdl:output message="tns:GetOperationalActivityLogsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSelIdwithDLR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends an SMS to one or more MSISDNs with the definition of the identifier as the sender of the message or in the message body.</wsdl:documentation>
+      <wsdl:input message="tns:SendSMSSelIdwithDLRSoapIn" />
+      <wsdl:output message="tns:SendSMSSelIdwithDLRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSwithDLR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends an SMS to one or more MSISDNs</wsdl:documentation>
+      <wsdl:input message="tns:SendSMSwithDLRSoapIn" />
+      <wsdl:output message="tns:SendSMSwithDLRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveListMSISDN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes MSISDN from a List</wsdl:documentation>
+      <wsdl:input message="tns:RemoveListMSISDNSoapIn" />
+      <wsdl:output message="tns:RemoveListMSISDNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignAutoDedicatedReply">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates and sends a Campaign with automatic dedicated reply</wsdl:documentation>
+      <wsdl:input message="tns:SendCampaignAutoDedicatedReplySoapIn" />
+      <wsdl:output message="tns:SendCampaignAutoDedicatedReplySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCampaignLists">
+      <wsdl:input message="tns:DeleteCampaignListsSoapIn" />
+      <wsdl:output message="tns:DeleteCampaignListsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignAutoReply">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates and sends a Campaign with an automatic reply</wsdl:documentation>
+      <wsdl:input message="tns:SendCampaignAutoReplySoapIn" />
+      <wsdl:output message="tns:SendCampaignAutoReplySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DumpMessageLogs">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets all the Message logs that have not yet been obtained</wsdl:documentation>
+      <wsdl:input message="tns:DumpMessageLogsSoapIn" />
+      <wsdl:output message="tns:DumpMessageLogsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the user data</wsdl:documentation>
+      <wsdl:input message="tns:SetUserDataSoapIn" />
+      <wsdl:output message="tns:SetUserDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddListMember">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add Members to a List</wsdl:documentation>
+      <wsdl:input message="tns:AddListMemberSoapIn" />
+      <wsdl:output message="tns:AddListMemberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIdentifiers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates the identifiers used in the account, validations are made, all identifiers will be replaced by the ones sent.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateIdentifiersSoapIn" />
+      <wsdl:output message="tns:UpdateIdentifiersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Client Status</wsdl:documentation>
+      <wsdl:input message="tns:GetClientStatusSoapIn" />
+      <wsdl:output message="tns:GetClientStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SMSPROWSSoap" type="tns:SMSPROWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaigns">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetCampaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCampaigns">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/DeleteCampaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignStatus">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetCampaignStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWapPush">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendWapPush" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLists">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetLists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddListMSISDN">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/AddListMSISDN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberInformationByListId">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetMemberInformationByListId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateCampaign">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/TerminateCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignReplies">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetCampaignReplies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSelId">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendSMSSelId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignAutoReplyRegEx">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendCampaignAutoReplyRegEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCampaign">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/DeleteCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMembers">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/AddMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendSMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryReports">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetDeliveryReports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIdentifiers">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetIdentifiers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegularExpressions">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetRegularExpressions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMembers">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/UpdateMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateList">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/CreateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetUserPassword">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/ResetUserPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchLogs">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SearchLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelCampaign">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/CancelCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignUnreadReplies">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetCampaignUnreadReplies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSelIdwithDLRWithValidity">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendSMSSelIdwithDLRWithValidity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignWapPush">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendCampaignWapPush" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOperationalActivityLogs">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetOperationalActivityLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSelIdwithDLR">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendSMSSelIdwithDLR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSwithDLR">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendSMSwithDLR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveListMSISDN">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/RemoveListMSISDN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignAutoDedicatedReply">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendCampaignAutoDedicatedReply" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCampaignLists">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/DeleteCampaignLists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignAutoReply">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SendCampaignAutoReply" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DumpMessageLogs">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/DumpMessageLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserData">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/SetUserData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddListMember">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/AddListMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIdentifiers">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/UpdateIdentifiers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientStatus">
+      <soap:operation soapAction="http://SmsPro/SMSPROWS/GetClientStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMSPROWSSoap12" type="tns:SMSPROWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUsers">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaigns">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetCampaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCampaigns">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/DeleteCampaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignStatus">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetCampaignStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWapPush">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendWapPush" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLists">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetLists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddListMSISDN">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/AddListMSISDN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberInformationByListId">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetMemberInformationByListId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateCampaign">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/TerminateCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignReplies">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetCampaignReplies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSelId">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendSMSSelId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignAutoReplyRegEx">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendCampaignAutoReplyRegEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCampaign">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/DeleteCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMembers">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/AddMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendSMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliveryReports">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetDeliveryReports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIdentifiers">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetIdentifiers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegularExpressions">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetRegularExpressions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMembers">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/UpdateMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateList">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/CreateList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetUserPassword">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/ResetUserPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchLogs">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SearchLogs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelCampaign">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/CancelCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignUnreadReplies">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetCampaignUnreadReplies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/CreateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSelIdwithDLRWithValidity">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendSMSSelIdwithDLRWithValidity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignWapPush">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendCampaignWapPush" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOperationalActivityLogs">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetOperationalActivityLogs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSelIdwithDLR">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendSMSSelIdwithDLR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSwithDLR">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendSMSwithDLR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveListMSISDN">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/RemoveListMSISDN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignAutoDedicatedReply">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendCampaignAutoDedicatedReply" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCampaignLists">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/DeleteCampaignLists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCampaignAutoReply">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SendCampaignAutoReply" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DumpMessageLogs">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/DumpMessageLogs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserData">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/SetUserData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddListMember">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/AddListMember" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIdentifiers">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/UpdateIdentifiers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientStatus">
+      <soap12:operation soapAction="http://SmsPro/SMSPROWS/GetClientStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMSPROWS">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SMSPRO Web Service</wsdl:documentation>
+    <wsdl:port name="SMSPROWSSoap" binding="tns:SMSPROWSSoap">
+      <soap:address location="http://smspro.nos.pt/SmsPro/smsprows.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SMSPROWSSoap12" binding="tns:SMSPROWSSoap12">
+      <soap12:address location="http://smspro.nos.pt/SmsPro/smsprows.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
